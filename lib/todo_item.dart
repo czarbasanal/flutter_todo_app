@@ -1,27 +1,14 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
+
 part 'todo_item.g.dart';
 
 @HiveType(typeId: 1)
-class TodoItem extends HiveObject {
+class TodoItem {
   @HiveField(0)
-  String? title;
+  final String title;
 
   @HiveField(1)
-  String? description;
+  bool isCompleted;
 
-  @HiveField(2)
-  DateTime? dueDate;
-
-  @HiveField(3, defaultValue: false)
-  bool? isCompleted;
-
-  @HiveField(4)
-  String? filePath;
-
-  TodoItem(
-      {this.title,
-      this.description,
-      this.dueDate,
-      this.isCompleted,
-      this.filePath});
+  TodoItem(this.title, {this.isCompleted = false});
 }
